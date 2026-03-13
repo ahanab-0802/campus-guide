@@ -1,0 +1,44 @@
+# docker-compose.yml
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: campus-guide-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist the SQLite database outside the container
+      - ./campus_guide.db:/app/campus_guide.db
+      # Mount ML models (they're large, avoid rebuilding image for model updates)
+      - ./ml_models:/app/ml_models
+      # Mount resume templates
+      - ./resume_templates:/app/resume_templates
+    environment:
+      - DATABASE_URL=sqlite:///./campus_guide.db
+      - ML_MODELS_PATH=/app/ml_models
+    networks:
+      - campus-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: campus-guide-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # This tells Streamlit where the backend lives inside Docker
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - campus-network
+    restart: unless-stopped
+
+networks:
+  campus-network:
+    driver: bridge

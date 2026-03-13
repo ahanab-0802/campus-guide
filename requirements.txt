@@ -1,0 +1,46 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Campus Guide — Python Dependencies
+# Install: pip install -r requirements.txt
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Backend Framework ─────────────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9        # Required for file uploads in FastAPI
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.30
+# psycopg2-binary==2.9.9       # Uncomment for PostgreSQL
+
+# ── Auth & Security ───────────────────────────────────────────────────────────
+python-jose[cryptography]==3.3.0   # JWT tokens
+passlib[bcrypt]==1.7.4             # Password hashing
+bcrypt==4.1.3
+
+# ── Pydantic ─────────────────────────────────────────────────────────────────
+pydantic==2.7.4
+pydantic[email]==2.7.4
+
+# ── ML & Data Science ────────────────────────────────────────────────────────
+scikit-learn==1.5.0
+xgboost==2.0.3
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+
+# ── NLP ───────────────────────────────────────────────────────────────────────
+spacy==3.7.4
+# Run: python -m spacy download en_core_web_sm
+
+# ── Resume Processing ─────────────────────────────────────────────────────────
+pypdf==4.2.0
+
+# ── PDF Generation ────────────────────────────────────────────────────────────
+reportlab==4.2.0
+
+# ── Frontend ──────────────────────────────────────────────────────────────────
+streamlit==1.35.0
+requests==2.32.3
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1

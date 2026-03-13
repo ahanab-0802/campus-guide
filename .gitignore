@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Database (don't push your local DB)
+campus_guide.db
+
+# ML Models (too large for GitHub)
+ml_models/
+
+# Virtual environments
+venv/
+.venv/
+
+# Docker
+.dockerignore
